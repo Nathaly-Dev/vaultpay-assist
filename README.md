@@ -242,7 +242,7 @@ PYTHONPATH=src .venv/Scripts/python -m vaultpay_copilot.evaluation.run_eval --es
 | O texto entregue pode ter sido escrito pelo modelo? | sim | **não** (só textos da biblioteca) |
 | Tempo com o modelo (mediana / 90%) | 11,7 s / 17,2 s | **5,4 s / 7,9 s** |
 
-Os 10 que ainda respondem sem base entregam textos aprovados: 6 são verdadeiros e próximos do assunto; 4 são do assunto errado (P013, P056, P062, P071). Detalhes no ADR.
+Os 10 que ainda respondem sem base entregam textos aprovados: 6 são verdadeiros e próximos do assunto; 4 são do assunto errado (P013, P056, P062, P071). Detalhes no ADR. Duas tentativas de recuperar as 4 perguntas com base perdidas (prompt `select-v2` e 6 trechos) recuperaram as perguntas, mas aumentaram as respostas erradas entregues (11 → 13 e 11 → 14). Não adotadas.
 
 Resultados completos em [`data/eval/results/`](data/eval/results/).
 

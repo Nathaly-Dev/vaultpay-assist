@@ -98,3 +98,21 @@ Biblioteca `respostas-v2.csv` (71 respostas, as 8 políticas, revisadas pela Nat
 - **Os 10 sem base que responderam:** 6 entregam um texto verdadeiro e próximo do assunto, mas que não responde exatamente (P036, P045, P047, P048, P054, P065). 4 são erros de escolha: P013 (celular roubado → golpe da falsa central), P056 (alguém entrou na conta → a VaultPay pode encerrar conta por fraude), P062 e P071 (cartão → regra do Pix MED).
 - **Leitura:** troca 4 respostas com base por 6 sem base a menos, e nunca inventa. O tempo ficou dentro da meta de 10 s em 90% das perguntas.
 - Arquivo: `data/eval/results/2026-11-15-qwen3-4b-instruct-select-v1-hibrida-rrf-perguntas-v2-respostas-v2.json`. Comando: `python -m vaultpay_copilot.evaluation.run_eval --escolha`.
+
+### Investigação das 4 perdas com base (2026-11-15)
+- **P018 e P046:** a resposta certa estava entre as candidatas (R065, R023), e o artigo certo veio em 1º na busca; o modelo devolveu `null`. Causa: "responde exatamente" e "na dúvida, use null" no `select-v1`. Testado o `select-v2`, sem essas frases.
+- **P064 e P077:** o artigo certo veio em 11º e em 6º na busca, e só os 4 primeiros trechos geram candidatas. Testado com 6 trechos (`--trechos=6`).
+
+**A "decisão certa" engana no modo escolha:** ela conta como acerto qualquer resposta a uma pergunta com base, mesmo com a resposta errada. Por isso a comparação abaixo usa **certas entregues** (com base respondida com a fonte certa + sem base encaminhada) e **erradas entregues** (sem base respondida + com base respondida com a fonte errada).
+
+| | Certas entregues | **Erradas entregues** | Decisão | Tempo (mediana / 90%) |
+|---|---|---|---|---|
+| Gera texto (`answer-v1`) | 78 | 18 | 80 | 11,7 s / 17,2 s |
+| **Escolhe: `select-v1`, 4 trechos** | 81 | **11** | 82 | **5,4 s / 7,9 s** |
+| Escolhe: `select-v2`, 4 trechos | 81 | 13 | 82 | 6,6 s / 8,3 s |
+| Escolhe: `select-v1`, 6 trechos | 82 | 14 | 88 | 7,6 s / 9,5 s |
+
+- **`select-v2`:** recupera P018 e P046, mas passa a responder sem base P070 e P072. Não adotado.
+- **6 trechos:** recupera as 4 perdas e mais P056, P062 e P085, mas escolhe a resposta do assunto errado em 6 perguntas com base (ex.: "saque no caixa 24h é de graça?" → "o assistente virtual funciona 24 horas"). Não adotado.
+- **Decisão:** fica `select-v1` com 4 trechos, a configuração com menos respostas erradas para o cliente. Com 100 perguntas, diferenças de 1 a 3 estão perto do ruído; a ordem entre as linhas é o que importa.
+- Arquivos: `...-select-v2-...-respostas-v2.json` e `...-select-v1-...-respostas-v2-k6.json` em `data/eval/results/`. Comandos: `run_eval --escolha` (com `PROMPT_VERSION` trocado para `select-v2` em `rag/selector.py`) e `run_eval --escolha --trechos=6`.

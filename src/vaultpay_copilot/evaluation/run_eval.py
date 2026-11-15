@@ -7,8 +7,8 @@ Três medidas automáticas, sem IA corrigindo IA:
 Se o texto da resposta está certo, uma pessoa decide (planilha de revisão).
 
 Nada vai para a tabela de conversas: o resultado é um arquivo em data/eval/results/.
-Uso: python -m vaultpay_copilot.evaluation.run_eval [--escolha]
-(--escolha: atendente que escolhe respostas aprovadas, ADR 0005)
+Uso: python -m vaultpay_copilot.evaluation.run_eval [--escolha] [--trechos=N]
+(--escolha: atendente que escolhe respostas aprovadas, ADR 0005; --trechos: padrão 4)
 """
 
 import csv
@@ -21,7 +21,7 @@ from datetime import date
 from pathlib import Path
 
 from vaultpay_copilot.rag.assistant import PROMPT_VERSION, Reply
-from vaultpay_copilot.rag.retriever import RetrievedChunk, chunk_source
+from vaultpay_copilot.rag.retriever import DEFAULT_K, MAX_K, RetrievedChunk, chunk_source
 
 EVAL_DIR = Path(__file__).resolve().parents[3] / "data" / "eval"
 DEFAULT_CASES = EVAL_DIR / "perguntas-v2.csv"
@@ -154,7 +154,7 @@ def write_review_sheet(path: Path, cases: list[EvalCase], results: list[CaseResu
                 writer.writerow([r.id, case.question, r.answer, case.expected_answer, ""])
 
 
-def main(choose: bool) -> None:
+def main(choose: bool, k: int = DEFAULT_K) -> None:
     import psycopg
     from pgvector.psycopg import register_vector
 
@@ -181,7 +181,7 @@ def main(choose: bool) -> None:
         last_search: list[RetrievedChunk] = []
 
         def retrieve(masked: str) -> list[RetrievedChunk]:
-            last_search[:] = search(conn, masked, embed(masked), embed.model_name)
+            last_search[:] = search(conn, masked, embed(masked), embed.model_name, k=k)
             return list(last_search)
 
         for case in cases:
@@ -200,6 +200,8 @@ def main(choose: bool) -> None:
     if choose:
         # Bibliotecas diferentes dão resultados diferentes: a versão entra no nome.
         run_id += f"-{LIBRARY.stem}"
+    if k != DEFAULT_K:
+        run_id += f"-k{k}"
     RESULTS_DIR.mkdir(exist_ok=True)
     summary = summarize(results)
     report = {
@@ -211,6 +213,7 @@ def main(choose: bool) -> None:
         "min_similarity": s.min_similarity,
         "embedding": embed.model_name,
         "busca": RETRIEVAL,
+        "trechos": k,
         "resumo": summary,
         "casos": [asdict(r) for r in results],
     }
@@ -222,5 +225,20 @@ def main(choose: bool) -> None:
     print(f"resultado: data/eval/results/{run_id}.json (+ -revisao.csv)")
 
 
+def parse_args(argv: list[str]) -> tuple[bool, int]:
+    """--escolha liga o atendente por escolha; --trechos=N muda quantos trechos a busca entrega."""
+    choose, k = False, DEFAULT_K
+    for arg in argv:
+        if arg == "--escolha":
+            choose = True
+        elif arg.startswith("--trechos="):
+            k = int(arg.removeprefix("--trechos="))
+            if not 1 <= k <= MAX_K:
+                raise SystemExit(f"--trechos precisa estar entre 1 e {MAX_K}")
+        else:
+            raise SystemExit(f"opção desconhecida: {arg}")
+    return choose, k
+
+
 if __name__ == "__main__":
-    main(choose="--escolha" in sys.argv[1:])
+    main(*parse_args(sys.argv[1:]))

@@ -7,6 +7,7 @@ from vaultpay_copilot.evaluation.run_eval import (
     DEFAULT_CASES,
     EvalCase,
     load_cases,
+    parse_args,
     parse_source,
     score,
     summarize,
@@ -208,3 +209,20 @@ def test_planilha_de_revisao_so_tem_as_respondidas(tmp_path):
     assert [r["id"] for r in rows] == ["P1"]
     assert rows[0]["resposta_esperada"] == "Peça devolução."
     assert rows[0]["correta_sim_nao"] == ""
+
+
+# --- opções da linha de comando ------------------------------------------------------------
+
+
+def test_sem_opcoes_mede_o_atendente_que_gera_texto_com_4_trechos():
+    assert parse_args([]) == (False, 4)
+
+
+def test_escolha_e_trechos():
+    assert parse_args(["--escolha", "--trechos=6"]) == (True, 6)
+
+
+@pytest.mark.parametrize("arg", ["--trechos=0", "--trechos=21", "--qualquer"])
+def test_recusa_opcao_invalida(arg):
+    with pytest.raises(SystemExit):
+        parse_args([arg])
