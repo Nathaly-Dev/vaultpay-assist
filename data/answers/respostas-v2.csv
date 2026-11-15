@@ -1,0 +1,72 @@
+﻿id;resposta;fontes
+R001;Pode abrir conta pessoa física quem tem 18 anos completos e CPF regular.;politica-conta-digital, Art. 1
+R002;A VaultPay não oferece conta para menores de idade.;politica-conta-digital, Art. 1
+R003;A VaultPay não oferece conta para empresas.;politica-conta-digital, Art. 1
+R004;A conta é aberta pelo app, com documento de identidade com foto e uma selfie.;politica-conta-digital, Art. 2
+R005;A VaultPay analisa o cadastro em até 2 dias úteis e avisa o resultado pelo app e por e-mail.;politica-conta-digital, Art. 2
+R006;A conta digital não tem mensalidade nem tarifa de manutenção.;politica-conta-digital, Art. 3
+R007;A conta fica inativa depois de 12 meses sem nenhuma movimentação, e a VaultPay avisa com 30 dias de antecedência. Conta inativa não é cobrada, mas o cartão pode ficar bloqueado até a reativação, que é feita pelo app.;politica-conta-digital, Art. 4
+R008;"Para encerrar a conta, use o app em ""Perfil > Encerrar conta"". Antes, é preciso zerar o saldo, e o encerramento é concluído em até 5 dias úteis.";politica-conta-digital, Art. 5
+R009;Depois do encerramento da conta, os dados continuam guardados pelo prazo da Política de Privacidade.;politica-conta-digital, Art. 5
+R010;A VaultPay pode encerrar uma conta em caso de fraude comprovada ou de descumprimento do contrato, avisando o cliente por e-mail.;politica-conta-digital, Art. 6
+R011;O Pix MED serve para contestar um Pix feito por golpe, fraude ou por alguém que usou a sua conta sem autorização.;politica-pix-med, Art. 1
+R012;O Pix MED não serve para arrependimento nem para discordância com quem recebeu o Pix, como um produto que não chegou sem indício de golpe.;politica-pix-med, Art. 1
+R013;A contestação pelo Pix MED deve ser aberta em até 30 dias corridos da data do Pix. Depois disso, não é aceita.;politica-pix-med, Art. 2
+R014;"A contestação de um Pix é aberta no app, em ""Ajuda > Contestar Pix"". Quanto mais cedo, maior a chance de recuperar o valor.";politica-pix-med, Art. 3
+R015;Ao receber a contestação de um Pix, a VaultPay pede o bloqueio preventivo do valor na conta de destino por até 72 horas, enquanto analisa.;politica-pix-med, Art. 4
+R016;A análise da contestação de um Pix leva até 7 dias corridos, e o resultado é informado pelo app.;politica-pix-med, Art. 5
+R017;Se a fraude no Pix for confirmada, o valor que ainda estiver na conta de quem recebeu é devolvido. Se parte do dinheiro já tiver saído de lá, a devolução pode ser parcial.;politica-pix-med, Art. 6
+R018;Se a análise não confirmar a fraude no Pix, o valor não é devolvido, e você pode pedir revisão à Ouvidoria.;politica-pix-med, Art. 6
+R019;Todo cliente tem um cartão virtual, disponível no app logo após a abertura da conta, e pode pedir um cartão físico, que é opcional.;politica-cartao, Art. 1
+R020;O cartão físico é pedido pelo app e chega em até 10 dias úteis. A emissão do primeiro cartão físico é gratuita.;politica-cartao, Art. 2
+R021;O cartão VaultPay não tem anuidade.;politica-cartao, Art. 2
+R022;O limite inicial de crédito do cartão é de R$ 500,00. A VaultPay reavalia o limite a cada 90 dias, com base no uso e no histórico, e avisa pelo app se houver aumento.;politica-cartao, Art. 3
+R023;Você pode bloquear e desbloquear o cartão pelo app a qualquer momento. O bloqueio vale na hora, é temporário e não tem custo.;politica-cartao, Art. 4
+R024;"Se você perdeu o cartão ou ele foi roubado ou furtado, bloqueie o cartão na hora pelo app e peça a segunda via. A primeira segunda via de cada ano é gratuita; as seguintes seguem a Tabela de Tarifas. O cartão antigo é cancelado de vez quando a segunda via é pedida.";politica-cartao, Art. 5
+R025;Se você não reconhece uma compra no cartão, conteste pelo app em até 60 dias corridos da data da compra. A VaultPay analisa em até 10 dias úteis.;politica-cartao, Art. 6
+R026;O Pix está disponível para todos os clientes com conta digital VaultPay ativa.;politica-pix, Art. 1
+R027;O Pix é gratuito para pessoa física, tanto para enviar quanto para receber.;politica-pix, Art. 1 | tabela-tarifas, Art. 1
+R028;O limite diário padrão para enviar Pix é de R$ 5.000,00, somando todos os Pix do dia.;politica-pix, Art. 2
+R029;Entre 20h e 6h, o limite total para enviar Pix é de R$ 1.000,00.;politica-pix, Art. 2
+R030;Você pode diminuir seus limites de Pix a qualquer momento, e a mudança vale na hora.;politica-pix, Art. 2
+R031;Para aumentar o limite do Pix, faça o pedido no app. O novo valor passa a valer em 24 horas, para proteger a conta contra fraude.;politica-pix, Art. 2
+R032;Você pode cadastrar até 5 chaves Pix na VaultPay. Os tipos aceitos são CPF, e-mail, telefone e chave aleatória.;politica-pix, Art. 3
+R033;Você pode agendar um Pix para uma data futura e cancelar o agendamento pelo app até as 23h59 do dia anterior. Depois disso, o Pix agendado não pode ser cancelado.;politica-pix, Art. 4
+R034;"O Pix concluído não pode ser desfeito pela VaultPay. Se você enviou para uma chave errada, abra um pedido de devolução no app, em ""Ajuda > Enviei Pix errado"". A devolução depende de quem recebeu concordar.";politica-pix, Art. 5
+R035;Em um aparelho novo, o limite de envio por Pix fica reduzido a R$ 500,00 por 24 horas.;politica-pix, Art. 6 | politica-seguranca-fraude, Art. 4
+R036;A VaultPay nunca pede, por nenhum canal, senha, PIN, código recebido por SMS, código do app ou foto do cartão com o código de segurança.;politica-seguranca-fraude, Art. 1
+R037;"A VaultPay nunca pede que você instale um aplicativo de acesso remoto nem que transfira dinheiro para uma ""conta segura"".";politica-seguranca-fraude, Art. 1
+R038;"Ligação de alguém dizendo ser da VaultPay e falando em ""movimentação suspeita"" é o golpe da falsa central. Encerre o contato e fale com a VaultPay só pelo chat do app.";politica-seguranca-fraude, Art. 2
+R039;Mensagem com link que imita o app ou o site da VaultPay é golpe. Encerre o contato e fale com a VaultPay só pelo chat do app.;politica-seguranca-fraude, Art. 2
+R040;Perfil em rede social que se passa pela VaultPay e pede dados é golpe. Encerre o contato e fale com a VaultPay só pelo chat do app.;politica-seguranca-fraude, Art. 2
+R041;O acesso ao app exige biometria ou PIN de 6 dígitos. Depois de 5 tentativas erradas de PIN, o acesso fica bloqueado por 30 minutos.;politica-seguranca-fraude, Art. 3
+R042;Ao entrar em um aparelho novo, você confirma a identidade por selfie. Nas primeiras 24 horas, o limite de Pix fica reduzido.;politica-seguranca-fraude, Art. 4
+R043;"Se você caiu em um golpe, nesta ordem: 1) bloqueie o cartão pelo app; 2) se houve Pix, abra a contestação do Pix MED o mais rápido possível; 3) troque o PIN; 4) registre um boletim de ocorrência.";politica-seguranca-fraude, Art. 5
+R044;"Mensagens, ligações ou perfis suspeitos podem ser denunciados pelo app, em ""Ajuda > Denunciar golpe"".";politica-seguranca-fraude, Art. 6
+R045;A VaultPay coleta apenas o necessário: nome, CPF, data de nascimento, e-mail, telefone, endereço, documento de identidade e selfie.;politica-privacidade, Art. 1
+R046;A selfie serve para confirmar a sua identidade.;politica-privacidade, Art. 1
+R047;Os dados são usados para abrir e manter a conta, prevenir fraudes, cumprir obrigações legais e atender você.;politica-privacidade, Art. 2
+R048;A VaultPay não vende dados pessoais.;politica-privacidade, Art. 2
+R049;Os dados cadastrais ficam guardados por 5 anos após o encerramento da conta, para cumprir obrigações legais.;politica-privacidade, Art. 3
+R050;As conversas com o atendimento digital ficam guardadas por 90 dias, com os dados pessoais mascarados.;politica-privacidade, Art. 3
+R051;O chat mascara CPF, e-mail e telefone antes de processar a mensagem. Mesmo assim, não digite senha, PIN nem o número completo do cartão na conversa.;politica-privacidade, Art. 4
+R052;"Você pode pedir confirmação de que tratamos seus dados, acesso, correção, portabilidade, eliminação (quando não houver obrigação legal de guardar) e com quem os dados são compartilhados. O pedido é feito pelo app, em ""Perfil > Privacidade"", e respondido em até 15 dias.";politica-privacidade, Art. 5
+R053;O Encarregado de dados (DPO) da VaultPay atende pelo e-mail dpo@vaultpay.example.;politica-privacidade, Art. 6
+R054;O atendimento é feito só pelo chat do app VaultPay. A VaultPay não atende por telefone nem por redes sociais.;politica-atendimento, Art. 1
+R055;O assistente virtual funciona 24 horas por dia, todos os dias.;politica-atendimento, Art. 2
+R056;Os atendentes humanos atendem de segunda a sexta, das 8h às 20h, e aos sábados, das 9h às 15h. Não há atendimento humano aos domingos e feriados nacionais.;politica-atendimento, Art. 2
+R057;Se você pedir um atendente, a conversa é encaminhada para uma pessoa, e você recebe um número de protocolo.;politica-atendimento, Art. 3
+R058;O atendente humano responde em até 1 dia útil depois do encaminhamento.;politica-atendimento, Art. 4
+R059;"Se o problema não for resolvido pelo atendimento, registre uma reclamação pelo app, em ""Ajuda > Reclamação"". A VaultPay responde em até 10 dias úteis.";politica-atendimento, Art. 5
+R060;Se continuar insatisfeito com a resposta da reclamação, recorra à Ouvidoria, também pelo app. Ela responde em até 10 dias úteis e é a instância final dentro da VaultPay.;politica-atendimento, Art. 6
+R061;São gratuitos: abertura e manutenção da conta, Pix, cartão virtual, emissão do primeiro cartão físico, anuidade do cartão e consulta de saldo e extrato.;tabela-tarifas, Art. 1
+R062;A TED custa R$ 6,90 por transferência.;tabela-tarifas, Art. 2
+R063;A emissão de boleto custa R$ 2,50 por boleto.;tabela-tarifas, Art. 2
+R064;A segunda via do cartão custa R$ 15,00 a partir da segunda no mesmo ano.;tabela-tarifas, Art. 2
+R065;Você tem 4 saques por mês sem custo em caixa eletrônico parceiro. A partir do quinto, cada saque custa R$ 6,50.;tabela-tarifas, Art. 2
+R066;A VaultPay não oferece DOC.;tabela-tarifas, Art. 3
+R067;A VaultPay não oferece cheque.;tabela-tarifas, Art. 3
+R068;A VaultPay não oferece empréstimo.;tabela-tarifas, Art. 3
+R069;A VaultPay não oferece investimentos.;tabela-tarifas, Art. 3
+R070;A VaultPay não oferece seguros.;tabela-tarifas, Art. 3
+R071;A VaultPay avisa pelo app e por e-mail com 30 dias de antecedência antes de mudar qualquer tarifa.;tabela-tarifas, Art. 4

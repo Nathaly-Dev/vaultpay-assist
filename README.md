@@ -228,6 +228,22 @@ O que continua errado, e por quê:
 - **A trava 1 não resolve:** com a nota mínima em 0,86, ela pegaria 7 dos 16 erros, mas derrubaria 14 das 46 respostas certas. Em 0,85, pegaria 3 e derrubaria 9. Os dois grupos têm notas parecidas (com base 0,81 a 0,92; sem base 0,79 a 0,91).
 - **Conclusão:** o problema é o modelo aceitar trecho "parecido" como resposta. Os próximos passos medem isso nesta prova: reranker e conferência de relevância da fonte.
 
+**Respostas aprovadas (2026-11-15, [ADR 0005](docs/decisions/0005-respostas-aprovadas.md)).** O modelo deixa de escrever e passa a escolher uma de 71 respostas revisadas pela Nathaly (`data/answers/respostas-v2.csv`), ou nenhuma. Mesmas 100 perguntas, modelo, busca e `MIN_SIMILARITY`.
+
+```bash
+PYTHONPATH=src .venv/Scripts/python -m vaultpay_copilot.evaluation.run_eval --escolha
+```
+
+| Medida | Gera texto (`answer-v1`) | Escolhe (`select-v1`) |
+|---|---|---|
+| Decisão certa | 80/100 | **82/100** |
+| Com base: respondeu | **46/50** | 42/50 |
+| Sem base: respondeu (o erro mais grave) | 16/50 | **10/50** |
+| O texto entregue pode ter sido escrito pelo modelo? | sim | **não** (só textos da biblioteca) |
+| Tempo com o modelo (mediana / 90%) | 11,7 s / 17,2 s | **5,4 s / 7,9 s** |
+
+Os 10 que ainda respondem sem base entregam textos aprovados: 6 são verdadeiros e próximos do assunto; 4 são do assunto errado (P013, P056, P062, P071). Detalhes no ADR. Duas tentativas de recuperar as 4 perguntas com base perdidas (prompt `select-v2` e 6 trechos) recuperaram as perguntas, mas aumentaram as respostas erradas entregues (11 → 13 e 11 → 14). Não adotadas.
+
 Resultados completos em [`data/eval/results/`](data/eval/results/).
 
 **Latência** (2026-10-30, Ryzen 7 5825U sem GPU dedicada, 16 GB, `qwen3:4b-instruct` no Ollama). É medida de velocidade, não de qualidade: as 10 perguntas do medidor só servem de carga.
