@@ -35,7 +35,7 @@ O que já foi medido e não resolveu:
 5. **O título de cada parte é o único texto escrito pelo modelo que o cliente vê.** Passa pelo tapa-dados, tem no máximo 60 caracteres e sai como texto puro. Afirmações (valores, prazos, regras) só vêm das respostas aprovadas.
 6. **Prompts versionados** em arquivos novos (`split-v1.md`, `select-v1.md`), como o `answer-v1`.
 7. **Nenhuma dependência nova.**
-8. **Em etapas, uma por PR:** (a) este ADR; (b) biblioteca, revisada pela Nathaly; (c) mensagens com várias perguntas escritas pela Nathaly, num arquivo novo da prova; (d) escolha para uma pergunta, medida na v2; (e) separação em partes, medida nas mensagens novas.
+8. **Em etapas, uma por PR:** (a) este ADR; (a2) **piloto**: biblioteca só para Conta Digital, Pix MED e Cartão (as políticas dos erros mais graves: P056, P068, P070, P071) e escolha para uma pergunta, medida nas perguntas da v2 dessas políticas e nas sem base em que a busca traz trechos delas. Se o piloto não reduzir as respostas sem base, este ADR vira "rejeitada" sem investir no resto; (b) biblioteca completa, revisada pela Nathaly; (c) mensagens com várias perguntas escritas pela Nathaly, num arquivo novo da prova; (d) escolha para uma pergunta, medida na v2; (e) separação em partes, medida nas mensagens novas.
 9. **Quem perder sai do código:** se a escolha ganhar, a geração livre (`answer-v1`) é removida; se perder, este ADR vira "rejeitada" e a escolha não entra.
 
 ## Como será medido
