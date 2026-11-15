@@ -62,4 +62,20 @@ O que já foi medido e não resolveu:
 - **Gravação:** a conversa continua gravada com as fontes. Gravar também os `id` das respostas escolhidas fica para quando a análise da Fase 5 precisar (seria uma migration nova).
 
 ## Resultado
-(a registrar depois das etapas d e e)
+
+### Piloto (2026-11-15)
+Biblioteca `respostas-v1.csv` (25 respostas: Conta Digital, Pix MED e Cartão), prompt `select-v1`, uma pergunta por mensagem. Mesmo modelo, busca e `MIN_SIMILARITY` da linha de base. Recorte do piloto: 14 perguntas com base dessas políticas e 46 sem base em que a busca traz trechos delas.
+
+| Medida no recorte | Linha de base (`answer-v1`) | Piloto (`select-v1`) |
+|---|---|---|
+| Com base: respondeu | 13/14 | 13/14 |
+| Fonte certa | 13/13 | 13/13 |
+| **Sem base: respondeu (erro)** | **16/46** | **7/46** |
+| Decisão certa | 43/60 | **52/60** |
+| Tempo mediano com o modelo | 11,3 s | **2,8 s** |
+
+- **Os 7 que sobram:** 4 entregam um texto aprovado e verdadeiro que a política diz, mas que o gabarito trata como sem base, porque não responde exatamente o como ou o onde (P045, P047, P048, P065). 3 são erros de escolha: P056 ("alguém entrou na conta" → "a VaultPay pode encerrar conta em caso de fraude"), P071 (cartão → resposta do Pix MED) e P062 (piorou: "por que foi recusada" → prazo de análise).
+- **Nenhuma resposta inventada:** todo texto entregue é da biblioteca.
+- **Limite do piloto:** em P031, P036, P054 e P059, a resposta "tentadora" está em políticas fora do piloto (Pix, Segurança), então o modelo não a tinha como opção. A biblioteca completa pode trazer parte desses erros de volta. Em P013, P052, P068, P070, P072 e P100 a tentação estava no piloto e o modelo recusou.
+- **Decisão:** o piloto reduziu as respostas sem base e o tempo, sem perder respostas com base. Segue para a biblioteca completa (etapa b).
+- Arquivos: `data/eval/results/2026-11-15-qwen3-4b-instruct-select-v1-hibrida-rrf-perguntas-v2.json`. Recorte: `python -m vaultpay_copilot.evaluation.pilot_report <base.json> <piloto.json>`. A decisão geral do arquivo (58/100) não é comparável: fora das 3 políticas, o piloto não tem respostas.

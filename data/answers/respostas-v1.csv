@@ -1,0 +1,26 @@
+﻿id;resposta;fontes
+R001;Pode abrir conta pessoa física quem tem 18 anos completos e CPF regular.;politica-conta-digital, Art. 1
+R002;A VaultPay não oferece conta para menores de idade.;politica-conta-digital, Art. 1
+R003;A VaultPay não oferece conta para empresas.;politica-conta-digital, Art. 1
+R004;A conta é aberta pelo app, com documento de identidade com foto e uma selfie.;politica-conta-digital, Art. 2
+R005;A VaultPay analisa o cadastro em até 2 dias úteis e avisa o resultado pelo app e por e-mail.;politica-conta-digital, Art. 2
+R006;A conta digital não tem mensalidade nem tarifa de manutenção.;politica-conta-digital, Art. 3
+R007;A conta fica inativa depois de 12 meses sem nenhuma movimentação, e a VaultPay avisa com 30 dias de antecedência. Conta inativa não é cobrada, mas o cartão pode ficar bloqueado até a reativação, que é feita pelo app.;politica-conta-digital, Art. 4
+R008;"Para encerrar a conta, use o app em ""Perfil > Encerrar conta"". Antes, é preciso zerar o saldo, e o encerramento é concluído em até 5 dias úteis.";politica-conta-digital, Art. 5
+R009;Depois do encerramento da conta, os dados continuam guardados pelo prazo da Política de Privacidade.;politica-conta-digital, Art. 5
+R010;A VaultPay pode encerrar uma conta em caso de fraude comprovada ou de descumprimento do contrato, avisando o cliente por e-mail.;politica-conta-digital, Art. 6
+R011;O Pix MED serve para contestar um Pix feito por golpe, fraude ou por alguém que usou a sua conta sem autorização.;politica-pix-med, Art. 1
+R012;O Pix MED não serve para arrependimento nem para discordância com quem recebeu o Pix, como um produto que não chegou sem indício de golpe.;politica-pix-med, Art. 1
+R013;A contestação pelo Pix MED deve ser aberta em até 30 dias corridos da data do Pix. Depois disso, não é aceita.;politica-pix-med, Art. 2
+R014;"A contestação de um Pix é aberta no app, em ""Ajuda > Contestar Pix"". Quanto mais cedo, maior a chance de recuperar o valor.";politica-pix-med, Art. 3
+R015;Ao receber a contestação de um Pix, a VaultPay pede o bloqueio preventivo do valor na conta de destino por até 72 horas, enquanto analisa.;politica-pix-med, Art. 4
+R016;A análise da contestação de um Pix leva até 7 dias corridos, e o resultado é informado pelo app.;politica-pix-med, Art. 5
+R017;Se a fraude no Pix for confirmada, o valor que ainda estiver na conta de quem recebeu é devolvido. Se parte do dinheiro já tiver saído de lá, a devolução pode ser parcial.;politica-pix-med, Art. 6
+R018;Se a análise não confirmar a fraude no Pix, o valor não é devolvido, e você pode pedir revisão à Ouvidoria.;politica-pix-med, Art. 6
+R019;Todo cliente tem um cartão virtual, disponível no app logo após a abertura da conta, e pode pedir um cartão físico, que é opcional.;politica-cartao, Art. 1
+R020;O cartão físico é pedido pelo app e chega em até 10 dias úteis. A emissão do primeiro cartão físico é gratuita.;politica-cartao, Art. 2
+R021;O cartão VaultPay não tem anuidade.;politica-cartao, Art. 2
+R022;O limite inicial de crédito do cartão é de R$ 500,00. A VaultPay reavalia o limite a cada 90 dias, com base no uso e no histórico, e avisa pelo app se houver aumento.;politica-cartao, Art. 3
+R023;Você pode bloquear e desbloquear o cartão pelo app a qualquer momento. O bloqueio vale na hora, é temporário e não tem custo.;politica-cartao, Art. 4
+R024;"Se você perdeu o cartão ou ele foi roubado ou furtado, bloqueie o cartão na hora pelo app e peça a segunda via. A primeira segunda via de cada ano é gratuita; as seguintes seguem a Tabela de Tarifas. O cartão antigo é cancelado de vez quando a segunda via é pedida.";politica-cartao, Art. 5
+R025;Se você não reconhece uma compra no cartão, conteste pelo app em até 60 dias corridos da data da compra. A VaultPay analisa em até 10 dias úteis.;politica-cartao, Art. 6

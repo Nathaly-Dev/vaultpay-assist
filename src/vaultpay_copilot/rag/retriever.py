@@ -1,5 +1,6 @@
 """Busca, no banco, os trechos de política que respondem à pergunta (busca híbrida, ADR 0004)."""
 
+import re
 import sys
 from dataclasses import dataclass
 
@@ -79,6 +80,15 @@ class RetrievedChunk:
     @property
     def citation(self) -> str:
         return f"{self.title}, {self.article}"
+
+
+def chunk_source(chunk: RetrievedChunk) -> tuple[str, int]:
+    """(slug da política, número do artigo), o formato das fontes do gabarito e da biblioteca."""
+    # chunk.article é "Art. 5. Pix enviado para a pessoa errada".
+    match = re.match(r"Art\. (\d+)\.", chunk.article)
+    if not match:
+        raise ValueError(f"artigo sem número: {chunk.article!r}")
+    return chunk.slug, int(match.group(1))
 
 
 def search(
