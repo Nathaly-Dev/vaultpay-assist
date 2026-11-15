@@ -1,1 +1,1 @@
-"""VaultPay Support Copilot: chatbot de atendimento com RAG (empresa fictícia)."""
+"""VaultPay Assist: chatbot de atendimento com RAG (empresa fictícia)."""

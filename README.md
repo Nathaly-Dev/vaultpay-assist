@@ -1,6 +1,6 @@
-# VaultPay Support Copilot
+# VaultPay Assist
 
-[![CI](https://github.com/Nathaly-Dev/vaultpay-support-copilot/actions/workflows/ci.yml/badge.svg)](https://github.com/Nathaly-Dev/vaultpay-support-copilot/actions/workflows/ci.yml)
+[![CI](https://github.com/Nathaly-Dev/vaultpay-assist/actions/workflows/ci.yml/badge.svg)](https://github.com/Nathaly-Dev/vaultpay-assist/actions/workflows/ci.yml)
 
 Chatbot de atendimento ao cliente com RAG que responde dúvidas com base nas políticas da empresa, **sempre citando a fonte**, e encaminha para um atendente quando não sabe.
 
