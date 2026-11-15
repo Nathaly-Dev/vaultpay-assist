@@ -18,10 +18,11 @@ def write_library(tmp_path, *rows: str) -> Path:
     return path
 
 
-def test_a_biblioteca_publicada_le_sem_erro_e_toda_fonte_existe():
-    library = load_library(LIBRARY)
+@pytest.mark.parametrize(("name", "total"), [("respostas-v1.csv", 25), ("respostas-v2.csv", 71)])
+def test_a_biblioteca_publicada_le_sem_erro_e_toda_fonte_existe(name, total):
+    library = load_library(LIBRARY.parent / name)
 
-    assert len(library) == 25
+    assert len(library) == total
     for answer in library.values():
         for slug, article in answer.sources:
             text = (POLICIES / f"{slug}.md").read_text(encoding="utf-8")

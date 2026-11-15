@@ -197,6 +197,9 @@ def main(choose: bool) -> None:
     model = re.sub(r"[^a-z0-9.]+", "-", s.model)
     # O conjunto entra no nome: resultados da v1 e da v2 não são comparáveis entre si.
     run_id = f"{date.today()}-{model}-{prompt}-{RETRIEVAL}-{DEFAULT_CASES.stem}"
+    if choose:
+        # Bibliotecas diferentes dão resultados diferentes: a versão entra no nome.
+        run_id += f"-{LIBRARY.stem}"
     RESULTS_DIR.mkdir(exist_ok=True)
     summary = summarize(results)
     report = {

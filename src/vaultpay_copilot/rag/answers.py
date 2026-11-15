@@ -12,7 +12,7 @@ from vaultpay_copilot.rag.retriever import RetrievedChunk, chunk_source
 
 Source = tuple[str, int]  # (slug da política, número do artigo)
 
-LIBRARY = Path(__file__).resolve().parents[3] / "data" / "answers" / "respostas-v1.csv"
+LIBRARY = Path(__file__).resolve().parents[3] / "data" / "answers" / "respostas-v2.csv"
 _ID = re.compile(r"R\d{3}")
 _SOURCE = re.compile(r"([a-z0-9-]+), Art\. (\d+)")
 
