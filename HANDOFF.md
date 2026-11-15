@@ -1,4 +1,4 @@
-# HANDOFF: VaultPay Assist (support copilot)
+# HANDOFF: VaultPay Assist
 
 Estado em **2026-11-13**. Leia isto antes de continuar. Regras de trabalho e comandos ficam no [`CLAUDE.md`](CLAUDE.md); a visão do produto, no [`README.md`](README.md).
 

@@ -1,4 +1,4 @@
-# VaultPay Support Copilot
+# VaultPay Assist
 
 Chatbot de atendimento com RAG sobre políticas da **VaultPay, empresa FICTÍCIA**. Projeto de portfólio e de aprendizado (Nathaly, busca primeiro emprego como Engenheira de IA Jr).
 Complementa o `~/.claude/CLAUDE.md` global; em segurança vale o mais rígido.
