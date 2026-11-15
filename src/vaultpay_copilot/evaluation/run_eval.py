@@ -7,19 +7,21 @@ Três medidas automáticas, sem IA corrigindo IA:
 Se o texto da resposta está certo, uma pessoa decide (planilha de revisão).
 
 Nada vai para a tabela de conversas: o resultado é um arquivo em data/eval/results/.
-Uso: python -m vaultpay_copilot.evaluation.run_eval
+Uso: python -m vaultpay_copilot.evaluation.run_eval [--escolha]
+(--escolha: atendente que escolhe respostas aprovadas, ADR 0005)
 """
 
 import csv
 import json
 import re
 import statistics
+import sys
 from dataclasses import asdict, dataclass
 from datetime import date
 from pathlib import Path
 
 from vaultpay_copilot.rag.assistant import PROMPT_VERSION, Reply
-from vaultpay_copilot.rag.retriever import RetrievedChunk
+from vaultpay_copilot.rag.retriever import RetrievedChunk, chunk_source
 
 EVAL_DIR = Path(__file__).resolve().parents[3] / "data" / "eval"
 DEFAULT_CASES = EVAL_DIR / "perguntas-v2.csv"
@@ -61,14 +63,6 @@ def parse_source(text: str) -> Source:
     if not slug or not match:
         raise ValueError(f"fonte fora do formato 'slug, Art. N': {text!r}")
     return slug, int(match.group(1))
-
-
-def chunk_source(chunk: RetrievedChunk) -> Source:
-    # chunk.article é "Art. 5. Pix enviado para a pessoa errada".
-    match = re.match(r"Art\. (\d+)\.", chunk.article)
-    if not match:
-        raise ValueError(f"artigo sem número: {chunk.article!r}")
-    return chunk.slug, int(match.group(1))
 
 
 def load_cases(path: Path) -> list[EvalCase]:
@@ -160,12 +154,14 @@ def write_review_sheet(path: Path, cases: list[EvalCase], results: list[CaseResu
                 writer.writerow([r.id, case.question, r.answer, case.expected_answer, ""])
 
 
-def main() -> None:
+def main(choose: bool) -> None:
     import psycopg
     from pgvector.psycopg import register_vector
 
     from vaultpay_copilot.config import LlmSettings, Settings
     from vaultpay_copilot.ingestion.embedder import QueryEmbedder
+    from vaultpay_copilot.rag import selector
+    from vaultpay_copilot.rag.answers import LIBRARY, load_library
     from vaultpay_copilot.rag.assistant import answer
     from vaultpay_copilot.rag.llm import OllamaClient
     from vaultpay_copilot.rag.retriever import search
@@ -174,6 +170,9 @@ def main() -> None:
     llm = OllamaClient(s.base_url, s.model, s.timeout_s, s.keep_alive, s.num_predict)
     embed = QueryEmbedder()
     cases = load_cases(DEFAULT_CASES)
+    # Atendente por escolha (ADR 0005) ou o que gera texto (answer-v1).
+    prompt = selector.PROMPT_VERSION if choose else PROMPT_VERSION
+    library = load_library() if choose else {}
 
     results = []
     with psycopg.connect(Settings.from_env().conninfo()) as conn:
@@ -187,21 +186,25 @@ def main() -> None:
 
         for case in cases:
             last_search.clear()
-            reply = answer(case.question, retrieve, llm, s.min_similarity)
+            if choose:
+                reply = selector.select(case.question, retrieve, llm, s.min_similarity, library)
+            else:
+                reply = answer(case.question, retrieve, llm, s.min_similarity)
             result = score(case, reply, list(last_search))
             results.append(result)
             print(f"{case.id} {'ok ' if result.decision_ok else 'ERR'} {reply.outcome}")
 
     model = re.sub(r"[^a-z0-9.]+", "-", s.model)
     # O conjunto entra no nome: resultados da v1 e da v2 não são comparáveis entre si.
-    run_id = f"{date.today()}-{model}-{PROMPT_VERSION}-{RETRIEVAL}-{DEFAULT_CASES.stem}"
+    run_id = f"{date.today()}-{model}-{prompt}-{RETRIEVAL}-{DEFAULT_CASES.stem}"
     RESULTS_DIR.mkdir(exist_ok=True)
     summary = summarize(results)
     report = {
         "run_id": run_id,
         "conjunto": DEFAULT_CASES.name,
         "modelo": s.model,
-        "prompt": PROMPT_VERSION,
+        "prompt": prompt,
+        "biblioteca": LIBRARY.name if choose else None,
         "min_similarity": s.min_similarity,
         "embedding": embed.model_name,
         "busca": RETRIEVAL,
@@ -217,4 +220,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main(choose="--escolha" in sys.argv[1:])
